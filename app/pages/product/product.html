@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar primary>
+    <ion-title>{{product.name}}</ion-title>
+    <ion-buttons start>
+      <button menuToggle><ion-icon name="menu"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="product">     
+   <ion-item text-wrap>
+      <ion-thumbnail item-left>
+          <img [src]="product.images[0]" *ngIf="product.images[0]">
+          <img src="images/default_category.jpg" *ngIf="!product.images[0]">
+      </ion-thumbnail>
+       <h2>{{product.name}}</h2>
+       <p [innerHTML]="product.description"></p>
+    </ion-item>  
+   
+   
+   <ion-item>
+    <ion-icon name="pricetag" primary item-left></ion-icon>
+    <h3 primary> Price ${{product.price_discount}}</h3> 
+    <ion-note item-right>
+      <span>{{product.stock_status.toUpperCase()}}</span>
+    </ion-note>   
+   </ion-item>
+   
+   <ion-item>
+    <ion-note item-left>Quantity</ion-note>
+    <ion-input type="number" [(ngModel)]="quantity"></ion-input>
+    <ion-note item-right>
+      <button full primary (click)="addToCart(product.id)">
+        <ion-icon name="cart"></ion-icon>
+        Add to Cart
+      </button>
+    </ion-note>
+   </ion-item>
+   
+   <ion-item><button full primary (click)="openImages()">See Images</button></ion-item>
+  
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+      <button primary full clear (click)="openCart()">
+        <ion-icon name="cart"></ion-icon> Go to Cart
+      </button>
+  </ion-toolbar>
+</ion-footer>

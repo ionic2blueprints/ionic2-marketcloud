@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar primary>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{category.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar (input)="searchProducts($event)"></ion-searchbar>
+  <ion-list [virtualScroll]="products">
+    <ion-list-header>
+      Products
+    </ion-list-header>
+    <a ion-item *virtualItem="let prod" (click)="openProduct(prod)">
+        <ion-thumbnail item-left>
+          <img [src]="prod.images[0]" *ngIf="prod.images[0]">
+        </ion-thumbnail>
+        <h2>{{prod.name}}</h2>
+        <p [innerHTML]="prod.description"></p> 
+    </a>
+  </ion-list>
+</ion-content>

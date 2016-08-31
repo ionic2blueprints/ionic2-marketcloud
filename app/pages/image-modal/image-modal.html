@@ -1,0 +1,8 @@
+<ion-content padding class="image-modal">
+  <button fab fab-right fab-bottom (click)="close()"><ion-icon name="close" ></ion-icon></button>
+  <ion-slides>
+     <ion-slide *ngFor="let image of images">
+       <img [src]="image">
+     </ion-slide>
+  </ion-slides>
+</ion-content>

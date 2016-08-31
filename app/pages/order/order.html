@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar primary>
+    <ion-title>Order</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="order">
+ <form [ngFormModel]="addressForm">
+  <ion-list>
+     <ion-item>
+        <ion-label>Full Name</ion-label>
+        <ion-input type="text" ngControl="full_name" [(ngModel)]="address.full_name"></ion-input>
+     </ion-item>
+     
+     <ion-item>
+        <ion-label>Email</ion-label>
+        <ion-input type="text" ngControl="email" [(ngModel)]="address.email"></ion-input>
+     </ion-item>
+     
+     <ion-item>
+        <ion-label>Country</ion-label>
+        <ion-input type="text" ngControl="country" [(ngModel)]="address.country"></ion-input>
+     </ion-item>
+     
+     <ion-item>
+        <ion-label>State</ion-label>
+        <ion-input type="text" ngControl="state" [(ngModel)]="address.state"></ion-input>
+     </ion-item>
+     
+     <ion-item>
+        <ion-label>City</ion-label>
+        <ion-input type="text" ngControl="city" [(ngModel)]="address.city" ></ion-input>
+     </ion-item>
+     
+     <ion-item>
+        <ion-label>Address</ion-label>
+        <ion-input type="text" ngControl="address1" [(ngModel)]="address.address1"></ion-input>
+     </ion-item>
+     
+     <ion-item>
+        <ion-label>Postal Code</ion-label>
+        <ion-input type="text" ngControl="postal_code" [(ngModel)]="address.postal_code"></ion-input>
+     </ion-item>
+  </ion-list>
+  
+  <div>
+    <button full primary (click)="processOrder()" [disabled]="!addressForm.valid">Order</button>
+  </div>
+ </form>
+</ion-content>

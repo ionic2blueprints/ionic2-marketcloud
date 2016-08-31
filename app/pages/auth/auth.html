@@ -1,0 +1,59 @@
+<ion-content padding class="auth">
+  <div padding>
+  <ion-segment [(ngModel)]="auth" primary>
+    <ion-segment-button value="login">
+      Login
+    </ion-segment-button>
+    <ion-segment-button value="register">
+      Register
+    </ion-segment-button>
+  </ion-segment>
+</div>
+
+<div [ngSwitch]="auth">
+  <div *ngSwitchWhen="'login'">
+    <form [ngFormModel]="loginForm">
+    <ion-list>
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="text" ngControl="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" ngControl="password"></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <div padding>
+        <button block (click)="login()" [disabled]="!loginForm.valid">Sign In</button>
+      </div>
+    </form>
+  </div>
+
+  <div *ngSwitchWhen="'register'">
+    <form [ngFormModel]="regForm">
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Name</ion-label>
+          <ion-input type="text" ngControl="name"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="text" ngControl="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" ngControl="password"></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <div padding>
+        <button block (click)="register()" [disabled]="!regForm.valid">Register</button>
+      </div>
+    </form>
+  </div>
+</div>
+</ion-content>

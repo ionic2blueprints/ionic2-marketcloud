@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar primary>
+    <ion-title>Cart</ion-title>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="cart">
+  <ion-list>
+    <ion-card *ngFor="let item of items; let i = index">
+      <ion-item text-wrap>
+        <ion-thumbnail item-left>
+          <img [src]="item.images[0]" *ngIf="item.images[0]">
+        </ion-thumbnail>
+        <h2>{{item.name}}</h2>
+        <p [innerHTML]="item.description"></p>
+      </ion-item>
+      
+      <ion-item>
+        <ion-note item-left>Quantity</ion-note>
+        <ion-input type="number" [value]="item.quantity" #quantity></ion-input>
+        <ion-note item-right><button full primary (click)="changeQuantity(i, quantity.value)">Change</button></ion-note>
+        <ion-note item-right><button full secondary (click)="removeItem(item.id)">Remove</button></ion-note>
+      </ion-item>
+      
+      <ion-item>
+        <ion-note item-left>Sub Total</ion-note>
+        <ion-note item-left primary>${{item.price_discount}} x {{item.quantity}} = ${{item.price_discount * item.quantity}}</ion-note>
+      </ion-item> 
+       
+    </ion-card>
+    
+  </ion-list>
+  
+</ion-content>
+<ion-footer *ngIf="total">
+  <ion-toolbar>
+    <ion-title>Total is ${{total}}</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <button full primary clear (click)="checkout()">Checkout</button>
+  </ion-toolbar>
+</ion-footer>

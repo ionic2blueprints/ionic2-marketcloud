@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar primary>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Ionic 2 Store</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>  
+  <ion-list>
+     <a ion-item text-wrap *ngFor="let category of categories" (click)="openProducts(category)">
+        <ion-thumbnail item-left>
+          <img [src]="category.image_url" *ngIf="category.image_url">
+          <img src="images/default_category.jpg" *ngIf="!category.image_url">
+        </ion-thumbnail>
+        <h2>{{category.name}}</h2>
+        <p [innerHTML]="category.description"></p> 
+     </a>
+  </ion-list>
+
+</ion-content>
